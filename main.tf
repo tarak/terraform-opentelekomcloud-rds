@@ -17,9 +17,10 @@ resource "opentelekomcloud_kms_key_v1" "this" {
 }
 
 # resource "opentelekomcloud_rds_parametergroup_v3" "this" {
-#   count  = var.enabled ? 1 : 0
-#   name   = module.rds_label.id
-#   values = var.rds_parametergroup_values
+#   count       = var.enabled ? 1 : 0
+#   name        = module.rds_label.id
+#   description = module.rds_label.id
+#   values      = var.rds_parametergroup_values
 #   datastore {
 #     type    = var.rds_type
 #     version = var.rds_version
@@ -31,9 +32,10 @@ resource "opentelekomcloud_rds_instance_v3" "this" {
   name              = module.rds_label.id
   flavor            = var.rds_flavor
   availability_zone = var.availability_zones
-  # ha_replication_mode = var.rds_replication_mode
 
+  # ha_replication_mode = var.rds_replication_mode
   # param_group_id    = opentelekomcloud_rds_parametergroup_v3.this[0].id
+
   vpc_id            = var.vpc_id
   subnet_id         = var.subnet_id
   security_group_id = var.security_group_id
