@@ -18,13 +18,13 @@ variable "convert_case" {
 variable "delimiter" {
   type        = string
   default     = "-"
-  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`"
+  description = "Delimiter to be used between `namespace`, `stage`, `name` and `attributes`."
 }
 
 variable "enabled" {
   type        = bool
   default     = true
-  description = "Set to false to prevent the module from creating any resources"
+  description = "Set to false to prevent the module from creating any resources."
 }
 
 variable "kms_key_pending_days" {
@@ -36,7 +36,19 @@ variable "kms_key_pending_days" {
 variable "namespace" {
   type        = string
   default     = ""
-  description = "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'"
+  description = "Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp'."
+}
+
+variable "rds_parameter_group_enabled" {
+  description = "Whether to create a database parameter group."
+  type        = bool
+  default     = true
+}
+
+variable "rds_parameter_group_id" {
+  description = "ID of the DB parameter group to associate."
+  type        = string
+  default     = ""
 }
 
 variable "rds_parametergroup_values" {
@@ -47,12 +59,11 @@ variable "rds_parametergroup_values" {
 variable "rds_port" {
   type        = number
   description = "The RDS Listen Port."
-
 }
 
 variable "rds_version" {
   type        = string
-  description = "RDS version by workspace."
+  description = "RDS version."
 }
 
 variable "rds_flavor" {
@@ -68,7 +79,7 @@ variable "rds_replication_mode" {
 
 variable "rds_initial_password" {
   type        = string
-  description = "Password for the initial RDS user by workspace."
+  description = "Password for the initial RDS user."
 }
 
 variable "rds_type" {
@@ -104,7 +115,7 @@ variable "vpc_id" {
 
 variable "subnet_id" {
   type        = string
-  description = "Specifies the subnet id. Changing this parameter will create a new resource."
+  description = "Specifies the subnet ID. Changing this parameter will create a new resource."
 }
 
 variable "security_group_id" {
