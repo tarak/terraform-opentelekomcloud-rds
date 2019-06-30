@@ -32,25 +32,21 @@ resource "opentelekomcloud_networking_secgroup_rule_v2" "pgsql" {
 }
 
 module "rds" {
-  source                = "../../"
-  availability_zones    = ["eu-de-01"]
-  rds_backup_keep_days  = "14"
-  rds_backup_start_time = "23:00-00:00"
-  rds_flavor            = "rds.pg.s1.medium"
-  rds_initial_password  = "iamVerYxecure00!!#"
-
-  # rds_parametergroup_values = {
-  #   max_connections = "1000"
-  # }
-
-  rds_port          = 5432
-  rds_type          = "PostgreSQL"
-  rds_version       = "9.6"
-  rds_volume_size   = 50
-  rds_volume_type   = "COMMON"
-  security_group_id = opentelekomcloud_networking_secgroup_v2.postgresql.id
-  subnet_id         = data.opentelekomcloud_vpc_subnet_v1.subnet.id
-  vpc_id            = data.opentelekomcloud_vpc_v1.vpc.id
-  namespace         = "acme"
-  stage             = "staging"
+  source                      = "../../"
+  availability_zones          = ["eu-de-01"]
+  rds_backup_keep_days        = "14"
+  rds_backup_start_time       = "23:00-00:00"
+  rds_flavor                  = "rds.pg.s1.medium"
+  rds_initial_password        = "iamVerYxecure00!!#"
+  rds_parameter_group_enabled = false
+  rds_port                    = 5432
+  rds_type                    = "PostgreSQL"
+  rds_version                 = "9.6"
+  rds_volume_size             = 50
+  rds_volume_type             = "COMMON"
+  security_group_id           = opentelekomcloud_networking_secgroup_v2.postgresql.id
+  subnet_id                   = data.opentelekomcloud_vpc_subnet_v1.subnet.id
+  vpc_id                      = data.opentelekomcloud_vpc_v1.vpc.id
+  namespace                   = "acme"
+  stage                       = "staging"
 }

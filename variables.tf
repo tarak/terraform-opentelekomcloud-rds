@@ -87,7 +87,6 @@ variable "rds_type" {
   description = "Specifies the DB engine."
 }
 
-
 variable "rds_volume_type" {
   type        = string
   description = "Type of the RDS data volume."
